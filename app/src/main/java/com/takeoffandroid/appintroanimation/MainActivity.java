@@ -2,6 +2,7 @@ package com.takeoffandroid.appintroanimation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,14 +17,31 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.takeoffandroid.appintroanimation.HeadItemOneActivity;
+
 
 public class MainActivity extends AppCompatActivity{
+
+    Thread timer = new Thread(){
+        @Override
+        public void run() {
+            try{
+                sleep(10000);
+            } catch (InterruptedException e){
+                e.getStackTrace();
+            } finally {
+                startActivity(new Intent(getBaseContext(), HeadItemOneActivity.class));
+            }
+        }
+    };
 
     private static final String SAVING_STATE_SLIDER_ANIMATION = "SliderAnimationSavingState";
     private boolean isSliderAnimation = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        timer.start();
         super.onCreate(savedInstanceState);
 
         Window window = getWindow();
@@ -215,5 +233,11 @@ public class MainActivity extends AppCompatActivity{
         }
         super.onRestoreInstanceState(inState);
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
 }
