@@ -30,6 +30,23 @@ import it.gmariotti.cardslib.library.view.CardViewNative;
  */
 public class Frag4 extends Fragment {
     private RecyclerView recyclerView;
+    private MyAdapter myAdapter;
+
+    public static List<MyFrag4Data> getData(){
+        List<MyFrag4Data> data = new ArrayList<>();
+        int[] images = {R.drawable.shopping, R.drawable.socialnetwork, R.drawable.offers, R.drawable.mobile};
+        String[] titles = {"Shopping", "social", "Offers", "Mobile"};
+        for(int x = 0; x < images.length && x < titles.length; x++){
+            MyFrag4Data current = new MyFrag4Data();
+            current.img = images[x];
+            current.title = titles[x];
+
+            data.add(current);
+        }
+        return data;
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
