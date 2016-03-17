@@ -10,10 +10,10 @@
     </array>
 
     <array name="icons">
-        <item>@drawable/email</item>
-        <item>@drawable/calendar</item>
         <item>@drawable/shopping</item>
-        <item>@drawable/socialnetwork</item>
+        <item>@drawable/mobile</item>
+        <item>@drawable/offers</item>
+        <item>@drawable/delivery</item>
 
     </array>
 
