@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardViewNative;
 
 /**
  * Created by chris on 3/17/16.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private final LayoutInflater inflater;
-    List<MyFrag4Data> data = Collections.emptyList();
+    private LayoutInflater inflater;
+    List<MyFrag4Data> data = new ArrayList<>();
 
     public MyAdapter(Context context, List<MyFrag4Data> data){
         inflater = LayoutInflater.from(context);
@@ -32,22 +36,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MyFrag4Data current = data.get(position);
-        holder.title.setText(current.title);
-        holder.img.setImageResource(current.img);
+        holder.textView.setText(current.title);
+        holder.imageView.setImageResource(current.img);
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title;
-        ImageView img;
+        CardViewNative viewNative;
+        TextView textView;
+        ImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.fragtxt);
-            img = (ImageView) itemView.findViewById(R.id.fragimg);
+            viewNative = (CardViewNative)itemView.findViewById(R.id.cView);
+            textView = (TextView)itemView.findViewById(R.id.fragtxt);
+            imageView = (ImageView)itemView.findViewById(R.id.fragimg);
+
+
         }
     }
 }

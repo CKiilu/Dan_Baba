@@ -4,17 +4,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/f4ttl"/>
-    <android.support.v7.widget.RecyclerView
+        android:text="Test"
+        android:id="@+id/f4ttl"
+        android:layout_marginTop="50dp"/>
+    <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycler">
+        android:id="@+id/recycler"
+        android:layout_below="@+id/f4ttl">
 
-    </android.support.v7.widget.RecyclerView>
+    </it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView>
 
 
 </RelativeLayout>

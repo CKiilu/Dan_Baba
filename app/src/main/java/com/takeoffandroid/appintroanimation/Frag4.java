@@ -29,7 +29,7 @@ import it.gmariotti.cardslib.library.view.CardViewNative;
  * Created by chris on 3/15/16.
  */
 public class Frag4 extends Fragment {
-    private RecyclerView recyclerView;
+    private CardRecyclerView recyclerView;
     private MyAdapter myAdapter;
 
     public static List<MyFrag4Data> getData(){
@@ -51,7 +51,10 @@ public class Frag4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.f4, container, false);
-        recyclerView = (RecyclerView) layout.findViewById(R.id.recycler);
+        recyclerView = (CardRecyclerView) layout.findViewById(R.id.recycler);
+        myAdapter = new MyAdapter(getActivity(), getData());
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return layout;
 
 
